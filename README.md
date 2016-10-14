@@ -1,5 +1,5 @@
 # Hudu
-Hudu is an Android Application that allows a global population scale tracking of an individual’s self-reported symptoms of PTSD. This was created for researchers in the University of Bristol Psychology Department.
+Hudu is an Android Application that allows a global population scale tracking of an individual’s self-reported symptoms of Post-Traumatic-Stress-Disorder (PTSD). This was created for researchers in the University of Bristol Psychology Department.
 
 ### Installation
 - The .apk can be downloaded via our [Analytic Tool](https://myday.firebaseapp.com/ "Hudu's Analytic Tool").

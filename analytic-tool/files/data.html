@@ -1,0 +1,325 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" type="text/css" href="liststyle.css">
+<title>Data Page</title>
+</head>
+<div class="navbar">
+  <ul>
+    <li><img src="hdlogo.png" style="width:50px;height:50px;"></li>
+    <li><a href="data.html">Hudu</a></li>
+    <li><a onclick=exportDat()>Export</a></li>
+    <li><a href="https://myday.firebaseapp.com/Hudu1.2.apk">Download</a></li>
+    <li><a href="admin.html">Admin</a></li>
+    <li><a onclick=logOut()>Log Out</a></li>
+  </ul>
+</div>
+<div id="users">
+  <input class="search" placeholder="Search" />
+  <button class="sort" data-sort="name">
+    Sort by name
+  </button>
+  <ul class="list">
+      <li>
+        <h3 class="name"><a onclick = allData()>All</a></h3>
+        <p class="nationality"></p>
+      </li>
+  </ul>
+</div>
+<div id = "data">
+    <h4 class="userdeets" id="userDeets" ></h4>
+    <h5 class="userdeets2" id="uidDeets"></h5>
+    <!-- <h5 class="userdeets2" id="emailDeets"></h5> -->
+    <h5 class="userdeets2" id="userDeets2" ></h5>
+    <canvas id="myChart" width="400" height="125"></canvas>
+    <canvas id="myChart2" width="400" height="125"></canvas>
+
+</div>
+  <script src="list.min.js"></script>
+  <script src="https://cdn.firebase.com/js/client/2.4.1/firebase.js"></script>
+  <script src="Chart.min.js"></script>
+  <script> var ref = new Firebase("https://myday.firebaseio.com");
+  var authData = ref.getAuth();
+  if (authData) {
+    console.log("User " + authData.uid + " is logged in with " + authData.provider);
+  } else {
+    console.log("User is logged out");
+    window.location = "index.html";
+  }
+  </script>
+
+<script>
+function logOut() {
+  var ref = new Firebase("https://myday.firebaseio.com/");
+  ref.unauth();
+  window.location = "index.html";
+}
+
+function exportDat(){
+  var ref = new Firebase("https://myday.firebaseio.com/");
+  ref.once("value", function(snapshot) {
+    var data1 = snapshot.exportVal();
+
+    var hiddenElement = document.createElement('a');
+    hiddenElement.href = 'data:attachment/text,' + JSON.stringify(data1);
+    hiddenElement.target = '_blank';
+    hiddenElement.download = 'hudu.txt';
+    hiddenElement.click();
+  }, function(errorObject) {
+    console.log("The read failed: " + errorObject.code);
+  });
+}
+
+function allData() {
+document.getElementById("userDeets").innerHTML = "All";
+document.getElementById("userDeets2").innerHTML = "";
+document.getElementById("uidDeets").innerHTML = "";
+// document.getElementById("emailDeets").innerHTML = "";
+var userMap = new Map();
+var userMapM = new Map();
+var userMapA = new Map();
+var userMapE = new Map();
+var ref = new Firebase("https://myday.firebaseio.com/");
+  //get reference to the users ordered by their first name
+var fb = ref.child("data").once("value", function(datshot) {
+    datshot.forEach(function(children){
+              children.forEach(function(dates){
+                  var date=dates.key();
+                  var total = isNum(dates.val().morning) + isNum(dates.val().afternoon) + isNum(dates.val().evening);
+                  if (userMap.has(date)){
+                    userMap.set(date,userMap.get(date)+total);
+                    userMapM.set(date,userMapM.get(date)+isNum(dates.val().morning));
+                    userMapA.set(date,userMapA.get(date)+isNum(dates.val().afternoon));
+                    userMapE.set(date,userMapE.get(date)+isNum(dates.val().evening));
+                  }
+                  else {
+                    userMap.set(date,total);
+                    userMapM.set(date,isNum(dates.val().morning));
+                    userMapA.set(date,isNum(dates.val().afternoon));
+                    userMapE.set(date,isNum(dates.val().evening));
+                  }
+              });
+    });
+    var listofDates = userMap.keys();
+    var myKeys= new Array();
+    for (var key of listofDates) {
+        myKeys.push(key);
+    }
+    myKeys.sort();
+    var myVals = new Array();
+    var myValsM = new Array();
+    var myValsA = new Array();
+    var myValsE = new Array();
+    for (var key of myKeys) {
+      myVals.push(userMap.get(key));
+      myValsM.push(userMapM.get(key));
+      myValsA.push(userMapA.get(key));
+      myValsE.push(userMapE.get(key));
+    }
+  showGraph(myKeys,myVals,myValsM,myValsA,myValsE);
+  //showGraph(myKeys,myValsM,"myChart2");
+});
+
+
+}
+
+
+function userClick(uid) {
+
+  var ref = new Firebase("https://myday.firebaseio.com/");
+  //get reference to the users ordered by their first name
+  var fb = ref.child("users").child(uid).once("value",function(snap)
+  {
+  var user = snap.val();
+  console.log(user.firstname+ " "+user.lastname);
+  setGraph(uid);
+  var uidAndEmail = "UID: " + user.uid + "         E-mail: " + user.email;
+  var userDetails = "DOB: " + user.dob + "            Nationality: " + user.nationality + "            Gender: " + user.gender;
+  // allows use of whitespace in innerHTML (otherwise removes all spaces)
+  userDetails = userDetails.replace(/\s/g, '&nbsp;');
+  uidAndEmail = uidAndEmail.replace(/\s/g, '&nbsp;');
+  document.getElementById("userDeets").innerHTML = user.firstname + " " + user.lastname;
+  document.getElementById("uidDeets").innerHTML = uidAndEmail;
+  // document.getElementById("emailDeets").innerHTML = "E-mail: " + user.email;
+  document.getElementById("userDeets2").innerHTML = userDetails;
+}, function(errorObject) {
+  console.log("The read failed: " + errorObject.code);
+});
+
+
+  //var divider = document.getElementById("data");
+  //var content1 = document.createTextNode(deets.firstname + " " + deets.lastname + ": " + deets.uid);
+  //var content2 = document.createTextNode("Email: "+ deets.email + "       DOB: "+ deets.dob);
+  //var content3 =document.createTextNode("Gender: "+ deets.gender + "       Nationality: "+ deets.nationality);
+  //var br1 = document.createElement('br');
+  //var br2 = document.createElement('br');
+  }
+
+function isNum(num) {
+  if (num==null) {
+    return 0;
+  }
+  else {
+  return num;
+}
+}
+
+function setGraph(uid) {
+ var dates = [];
+ var data  = [];
+ var dataM = [];
+ var dataA = [];
+ var dataE = [];
+  var ref = new Firebase("https://myday.firebaseio.com/");
+  //get reference to the users ordered by their first name
+  var fb = ref.child("data").child(uid).once("value", function(datshot) {
+    datshot.forEach(function(days){
+      dates.push(days.key());
+      var total = isNum(days.val().morning) + isNum(days.val().afternoon) + isNum(days.val().evening);
+      data.push(total);
+      dataM.push(isNum(days.val().morning));
+      dataA.push(isNum(days.val().afternoon));
+      dataE.push(isNum(days.val().evening));
+     //here you can get values (.morning .afternoon .evening too)
+  });
+  showGraph(dates,data,dataM,dataA,dataE);
+}, function(errorObject) {
+  console.log("The read failed: " + errorObject.code);
+  });
+}
+
+function showGraph(dates,userData,morningData,afternoonData,eveningData) {
+  var firebaseData = {
+    labels : dates,
+    datasets : [
+      { label: "Total",
+        fillColor : "#FF4081",
+        strokeColor : "rgba(255,64,129,0.5)",
+        pointColor : "#fff",
+        pointStrokeColor : "#FF4081",
+        data : userData
+      }
+    ]
+  }
+
+  var splitData = {
+    labels : dates,
+    datasets : [
+      {
+        label: "Morning",
+        fillColor : "rgba(35,103,136,0.2)",
+        strokeColor : "rgba(35,103,136,1)",
+        pointColor : "rgba(35,103,136,1)",
+        pointStrokeColor : "rgba(35,103,136,1)",
+        data : morningData
+      },
+      { label: "Afternoon",
+        fillColor : "rgba(52,184,141,0.2)",
+        strokeColor : "rgba(52,184,141,1)",
+        pointColor : "rgba(52,184,141,1)",
+        pointStrokeColor : "rgba(52,184,141,1)",
+        data : afternoonData
+      },
+      { label: "Evening",
+        fillColor : "rgba(153,38,77,0.2)",
+        strokeColor : "rgba(153,38,77,1)",
+        pointColor : "rgba(153,38,77,1)",
+        pointStrokeColor : "rgba(153,38,77,1)",
+        data : eveningData
+      }
+    ]
+  }
+
+  var myGraph = document.getElementById("myChart").getContext('2d');
+  var myGraph2 = document.getElementById("myChart2").getContext('2d');
+  if (graphFlag) {
+  dataChart.destroy();
+  dataChart2.destroy();
+  }
+  graphFlag=1;
+  dataChart = new Chart(myGraph).Line(firebaseData);
+  dataChart2 = new Chart(myGraph2).Line(splitData);
+}
+
+var options = {
+  valueNames: [
+    'name',
+    'nationality'
+  ]
+};
+
+var graphFlag = 0;
+var dataChart;
+var dataChart2;
+
+var userList = new List('users', options);
+
+// Get a database reference to my day
+var ref = new Firebase("https://myday.firebaseio.com/");
+//get reference to the users ordered by their first name
+var fb = ref.child("users").orderByChild("firstname");
+
+fb.once("value", function(snapshot) {
+  snapshot.forEach(function(childSnapshot){
+    var uid = childSnapshot.val().uid;
+    var firname = childSnapshot.val().firstname;
+    var lasname = childSnapshot.val().lastname;
+    var deets =childSnapshot.val();
+    var fullname = firname + " " + lasname;
+    // { name: "Jonny", age: 24, city: "Umeå" }
+    var line = "<a onclick = userClick('"+uid+"') >"+fullname+" </a>";
+    var line2 = "<a> " + deets.nationality +"</a>";
+    var user = {
+      name: line,
+      nationality: line2,
+    }
+
+
+
+    userList.add(user);
+
+
+  });
+
+}, function (errorObject) {
+
+  /*
+  Permission denied for users who are not admins, so instead load up their name,
+  where they can click their name and set up graphs for their own data.
+  */
+
+  console.log("The read failed: " + errorObject.code);
+  // Get a database reference to my day
+  var ref = new Firebase("https://myday.firebaseio.com/");
+
+  // get uid and ref
+  var authData = ref.getAuth();
+  var uid = authData.uid;
+  console.log(uid);
+  var userRef = ref.child("users").child(uid);
+
+  userRef.once("value", function(snapshot) {
+      var uid = snapshot.val().uid;
+      var firname = snapshot.val().firstname;
+      var lasname = snapshot.val().lastname;
+      var deets = snapshot.val();
+      var fullname = firname + " " + lasname;
+      // { name: "Jonny", age: 24, city: "Umeå" }
+      var line = "<a onclick = userClick('"+uid+"') >"+fullname+" </a>";
+      var line2 = "<a> " + deets.nationality +"</a>";
+      var user = {
+        name: line,
+        nationality: line2,
+      }
+      userList.add(user);
+    });
+}, function(errorObject) {
+  console.log("The read failed: " + errorObject.code);
+});
+
+
+
+</script>
+
+</body>

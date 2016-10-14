@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:layoutDirection="rtl"
+    android:background="@color/bg_register"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:padding="10dp" >
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:orientation="vertical"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/email_entry"
+            android:textSize="30dp"
+            android:layout_gravity="right"
+            android:layout_marginBottom="10dp"
+            android:singleLine="true"
+            android:textColor="@color/lbl_welcome" />
+        <EditText
+            android:id="@+id/email"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:background="@color/input_register_bg"
+
+            android:inputType="textEmailAddress"
+            android:padding="10dp"
+            android:singleLine="true"
+            android:textColor="@color/input_register"
+            android:textColorHint="@color/input_register_hint" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/password_entry"
+            android:textSize="30dp"
+            android:layout_gravity="right"
+            android:layout_marginBottom="10dp"
+            android:singleLine="true"
+            android:textColor="@color/lbl_welcome" />
+        <EditText
+            android:id="@+id/password"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:background="@color/input_register_bg"
+
+            android:inputType="textPassword"
+            android:padding="10dp"
+            android:singleLine="true"
+            android:textColor="@color/input_register"
+            android:textColorHint="@color/input_register_hint" />
+
+        <!-- Login Button -->
+
+        <Button
+            android:id="@+id/button_login"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dip"
+            android:textSize="30dp"
+
+            android:background="#ea4c88"
+            android:text="@string/log_in"
+            android:textAllCaps="false"
+            android:textColor="@color/lbl_welcome" />
+
+        <!-- Link to Login Screen -->
+        <Button
+            android:id="@+id/button_register"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dip"
+            android:textSize="30dp"
+            android:textAllCaps="false"
+            android:background="#ea4c88"
+            android:text="@string/register_finish"
+            android:textColor="@color/lbl_welcome" />
+
+        <Button
+            android:id="@+id/button_change_language"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dip"
+            android:background="@null"
+            android:textSize="20dp"
+            android:textAllCaps="false"
+            android:text="@string/change_to_alternate"
+            android:textColor="@color/white" />
+
+        <Button
+            android:id="@+id/button_forgotpassword"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dip"
+            android:background="@null"
+            android:textSize="20dp"
+            android:textAllCaps="false"
+            android:text="@string/forgotpassword"
+            android:textColor="@color/white" />
+
+
+    </LinearLayout>
+
+</LinearLayout>

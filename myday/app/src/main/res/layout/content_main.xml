@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto" android:layout_width="match_parent"
+    android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:background="@color/bg_register"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:showIn="@layout/activity_main" tools:context=".MainActivity">
+
+    <TextView
+        android:id="@+id/currentDate"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text=""
+        android:textSize="33dp"
+        android:layout_gravity="center"
+        android:layout_marginBottom="10dp"
+        android:singleLine="true"
+        android:textColor="@color/lbl_welcome" />
+
+    <TextView
+        android:id="@+id/welcome"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="@string/welcome"
+        android:textSize="25dp"
+        android:layout_gravity="center"
+        android:singleLine="true"
+        android:textColor="@color/lbl_welcome"
+        android:layout_below="@+id/currentDate"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <!-- original : sunrise -->
+    <ImageButton
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:src="@mipmap/sunrise_outline_2"
+        android:id="@+id/sunriseButton"
+        android:layout_marginTop="100dp"
+        android:clickable="true"
+        android:background="@drawable/layout_round_pink"
+        android:adjustViewBounds="true"
+        android:cropToPadding="false"
+        android:scaleType="fitCenter"/>
+
+    <!-- original : sun -->
+    <ImageButton
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:src="@mipmap/sun_outline"
+        android:id="@+id/sunButton"
+        android:clickable="true"
+        android:background="@drawable/layout_round_pink"
+        android:layout_below="@+id/sunriseButton"
+        android:layout_marginTop="45dp"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true"
+        android:adjustViewBounds="true"
+        android:cropToPadding="false"
+        android:scaleType="fitCenter"/>
+
+    <!-- original : moon -->
+    <ImageButton
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:src="@mipmap/moon_outline"
+        android:id="@+id/moonButton"
+        android:clickable="true"
+        android:layout_marginTop="45dp"
+        android:background="@drawable/layout_round_pink"
+        android:layout_below="@+id/sunButton"
+        android:adjustViewBounds="true"
+        android:cropToPadding="false"
+        android:scaleType="fitCenter"/>
+
+
+</RelativeLayout>

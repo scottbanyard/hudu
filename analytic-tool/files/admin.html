@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" type="text/css" href="liststyle.css">
+<script src="dist/sweetalert.min.js"></script>
+<script src="list.min.js"></script>
+<link rel="stylesheet" type="text/css" href="dist/sweetalert2.css">
+<script src="https://cdn.firebase.com/js/client/2.4.1/firebase.js"></script>
+<title>Admin Page</title>
+</head>
+<script> var ref = new Firebase("https://myday.firebaseio.com");
+var authData = ref.getAuth();
+if (authData) {
+  console.log("User " + authData.uid + " is logged in with " + authData.provider);
+} else {
+  console.log("User is logged out");
+  window.location = "index.html";
+}
+</script>
+
+<div class="navbar">
+  <ul>
+    <li><img src="hdlogo.png" style="width:50px;height:50px;"></li>
+    <li><a href="data.html">Hudu</a></li>
+    <li><a onclick=exportDat()>Export</a></li>
+    <li><a href="https://myday.firebaseapp.com/Hudu1.1.apk">Download</a></li>
+    <li><a href="admin.html">Admin</a></li>
+    <li><a onclick=logOut()>Log Out</a></li>
+  </ul>
+</div>
+  <script src="list.min.js"></script>
+  <script src="https://cdn.firebase.com/js/client/2.4.1/firebase.js"></script>
+  <script src="Chart.min.js"></script>
+  <script> var ref = new Firebase("https://myday.firebaseio.com");
+  var authData = ref.getAuth();
+  if (authData) {
+    console.log("User " + authData.uid + " is logged in with " + authData.provider);
+  } else {
+    console.log("User is logged out");
+    window.location = "index.html";
+  }
+  </script>
+
+<script>
+
+function logOut() {
+  var ref = new Firebase("https://myday.firebaseio.com/");
+  ref.unauth();
+  window.location = "index.html";
+}
+
+// function that adds userid to admins tree and adds isAdmin = true
+function createAdmin() {
+  var ref = new Firebase("https://myday.firebaseio.com/");
+  var userid = document.getElementById('uid').value;
+  if (userid == "") {
+    swal("Oops!", "Please enter a uid.", "warning");
+  } else {
+    var userRef = ref.child('admins').child(userid);
+    userRef.update({
+      isAdmin: true
+    }, function(error) {
+      if (error) {
+        swal("Error!", "You do not have the permissions required to create an administrator.", "error");
+        console.log(error);
+      } else {
+        swal("Success!", "You have created a new administrator.", "success");
+        document.getElementById('uid').value = "";
+      }
+    });
+  }
+}
+
+// function that removes whole userid tree from admins tree
+function removeAdmin() {
+  var ref = new Firebase("https://myday.firebaseio.com/");
+  var userid = document.getElementById('uid').value;
+  if (userid == "") {
+    swal("Oops!", "Please enter a uid.", "warning");
+  } else {
+    var userRef = ref.child('admins').child(userid);
+    var onComplete = function(error) {
+      if (error) {
+        swal("Error!", "You do not have the permissions required to remove an administrator.", "error");
+        console.log(error);
+      } else {
+        swal("Success!", "You have removed the user's permissions as an administrator.", "success");
+        document.getElementById('uid').value = "";
+      }
+    };
+    userRef.remove(onComplete);
+  }
+}
+
+
+</script>
+
+<h2 class="admintitle"> Create or Remove Administrators </h2>
+<h4 class="adminintro"> Use the panel below to create or remove administrators.</h4>
+<h4 class="adminintro"> You can find their unique user id (uid) by clicking their name on the main page.</h4>
+
+<div class="form">
+<form action="" method="post">
+   <fieldset class="fieldset">
+      <br>
+      <label class="field" for="username">UID:  </label><input class="textbox" id="uid" placeholder="uid" type="text" name="uid">
+      <br><br>
+      <div class="submit">
+      <input type="button" value="Create" id="submit" onclick="createAdmin()" />
+      &nbsp;
+      &nbsp;
+      <input type="button" value="Remove" id="submit" onclick="removeAdmin()" />
+      </div>
+      <br>
+   </fieldset>
+</form>
+</div>
+
+</body>
+</html>

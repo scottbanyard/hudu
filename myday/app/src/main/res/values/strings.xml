@@ -1,0 +1,289 @@
+<resources>
+    <string name="app_name">Hudu</string>
+    <string name="action_settings">Settings</string>
+    <string name="logout">Logout</string>
+    <string name="title_activity_main">Home</string>
+    <string name="title_activity_intro">Introduction</string>
+    <string name="title_activity_registration">Registration</string>
+    <string name="title_activity_tandc">Terms and Conditions</string>
+    <string name="title_activity_changepw">Change Password</string>
+    <string name="title_activity_record">Record Number Of Intrusions</string>
+    <string name="title_activity_settings">Settings</string>
+
+
+
+    <!--Language Strings -->
+
+    <string name="alternate_language">"العربية"</string>
+    <string name="current_language">English</string>
+    <string name="change_to_alternate">
+    "Change language to Arabic"</string>
+
+    <!-- Registration Strings -->
+
+    <string name="first_name">First Name</string>
+    <string name="last_name">Last Name</string>
+    <string name="next_button">Next</string>
+    <string name="email_entry">Email</string>
+    <string name="password_entry">Password</string>
+    <string name="confirm_password">Confirm Password</string>
+    <string name="dob">Date of Birth</string>
+    <string name="gender">Gender</string>
+    <string name="country">Nationality</string>
+    <string name="register_finish">Register</string>
+    <string name="t_and_c">Terms and Conditions</string>
+
+    <!--log in strings -->
+    <string name="forgotpassword">Forgot Password</string>
+    <string name="log_in">Login</string>
+    <string name="main_menu">To Main Menu</string>
+    <string name= "large_text_intro">
+        "Welcome to our myDay application.\n\n""This is a working prototype made by team Kodimanjaro. Our names are Alexis, Nathan, Jamie, "
+        "Mark and Scott.\n\n"
+
+        "** Space for Introduction information from clients **\n\n""On the Main Menu you will be able to change your password, access this introduction "
+        "page, change the language to Arabic, and log out using the 3 button menu in the top right "
+        "corner. There are 3 buttons on the Main Menu, where the top one represents the 'Morning', "
+        "the middle one represents the 'Afternoon', and the bottom one represents the 'Evening'.\n\n""We have put out rough guidelines where Morning is 00:00 until 11:59, Afternoon is 12:00 until 16:59, and Evening is 17:00 until 23:59 (midnight).\n\n""Below are some instructions on how to use the application. Please read through these "
+        "carefully before attempting to use the application.\n\n""Instructions:\n\n"
+        "1) Once logged in, you can select a relevant button according to what time of day it is. \n\n"2) Use the arrows to increment or decrement the counter depending on how many intrusions you have had at that time of day. It is crucial you submit a 0 if you have no intrusions at that time of the day. \n\n""3) Even if you have no internet access at the time, click Submit and it will make sure your data is stored. \n\n"
+    </string>
+
+    <!--Terms and Conditions strings -->
+    <string name="agreement_button">Agree and Sign Up</string>
+    <string name="title_activity_terms_and_conditions">Terms_and_conditions</string>
+    <string name="large_text_tandc">
+        "Terms and Conditions to be provided by client.\n\n"
+    </string>
+
+ <!-- Strings for Recording-->
+    <string name="submit">Submit</string>
+    <string name="up">▲</string>
+    <string name="down">▼</string>
+
+
+ <!-- Array List for Nationality Drop Down box / Spinner -->
+    <string-array name="country_array">
+        <item>Select One</item>
+        <item>Afghan</item>
+        <item>Albanian</item>
+        <item>Algerian</item>
+        <item>American</item>
+        <item>Andorran</item>
+        <item>Angolan</item>
+        <item>Antiguans</item>
+        <item>Argentinean</item>
+        <item>Armenian</item>
+        <item>Australian</item>
+        <item>Austrian</item>
+        <item>Azerbaijani</item>
+        <item>Bahamian</item>
+        <item>Bahraini</item>
+        <item>Bangladeshi</item>
+        <item>Barbadian</item>
+        <item>Barbudans</item>
+        <item>Batswana</item>
+        <item>Belarusian</item>
+        <item>Belgian</item>
+        <item>Belizean</item>
+        <item>Beninese</item>
+        <item>Bhutanese</item>
+        <item>Bolivian</item>
+        <item>Bosnian</item>
+        <item>Brazilian</item>
+        <item>British</item>
+        <item>Bruneian</item>
+        <item>Bulgarian</item>
+        <item>Burkinabe</item>
+        <item>Burmese</item>
+        <item>Burundian</item>
+        <item>Cambodian</item>
+        <item>Cameroonian</item>
+        <item>Canadian</item>
+        <item>Cape Verdean</item>
+        <item>Central African</item>
+        <item>Chadian</item>
+        <item>Chilean</item>
+        <item>Chinese</item>
+        <item>Colombian</item>
+        <item>Comoran</item>
+        <item>Congolese</item>
+        <item>Costa Rican</item>
+        <item>Croatian</item>
+        <item>Cuban</item>
+        <item>Cypriot</item>
+        <item>Czech</item>
+        <item>Danish</item>
+        <item>Djibouti</item>
+        <item>Dominican</item>
+        <item>Dutch</item>
+        <item>East Timorese</item>
+        <item>Ecuadorean</item>
+        <item>Egyptian</item>
+        <item>Emirian</item>
+        <item>Equatorial Guinean</item>
+        <item>Eritrean</item>
+        <item>Estonian</item>
+        <item>Ethiopian</item>
+        <item>Fijian</item>
+        <item>Filipino</item>
+        <item>Finnish</item>
+        <item>French</item>
+        <item>Gabonese</item>
+        <item>Gambian</item>
+        <item>Georgian</item>
+        <item>German</item>
+        <item>Ghanaian</item>
+        <item>Greek</item>
+        <item>Grenadian</item>
+        <item>Guatemalan</item>
+        <item>Guinea-Bissauan</item>
+        <item>Guinean</item>
+        <item>Guyanese</item>
+        <item>Haitian</item>
+        <item>Herzegovinian</item>
+        <item>Honduran</item>
+        <item>Hungarian</item>
+        <item>I-Kiribati</item>
+        <item>Icelander</item>
+        <item>Indian</item>
+        <item>Indonesian</item>
+        <item>Iranian</item>
+        <item>Iraqi</item>
+        <item>Irish</item>
+        <item>Israeli</item>
+        <item>Italian</item>
+        <item>Ivorian</item>
+        <item>Jamaican</item>
+        <item>Japanese</item>
+        <item>Jordanian</item>
+        <item>Kazakhstani</item>
+        <item>Kenyan</item>
+        <item>Kittian and Nevisian</item>
+        <item>Kuwaiti</item>
+        <item>Kyrgyz</item>
+        <item>Laotian</item>
+        <item>Latvian</item>
+        <item>Lebanese</item>
+        <item>Liberian</item>
+        <item>Libyan</item>
+        <item>Liechtensteiner</item>
+        <item>Lithuanian</item>
+        <item>Luxembourger</item>
+        <item>Macedonian</item>
+        <item>Malagasy</item>
+        <item>Malawian</item>
+        <item>Malaysian</item>
+        <item>Maldivan</item>
+        <item>Malian</item>
+        <item>Maltese</item>
+        <item>Marshallese</item>
+        <item>Mauritanian</item>
+        <item>Mauritian</item>
+        <item>Mexican</item>
+        <item>Micronesian</item>
+        <item>Moldovan</item>
+        <item>Monacan</item>
+        <item>Mongolian</item>
+        <item>Moroccan</item>
+        <item>Mosotho</item>
+        <item>Motswana</item>
+        <item>Mozambican</item>
+        <item>Namibian</item>
+        <item>Nauruan</item>
+        <item>Nepalese</item>
+        <item>New Zealander</item>
+        <item>Nicaraguan</item>
+        <item>Nigerian</item>
+        <item>Nigerien</item>
+        <item>North Korean</item>
+        <item>Northern Irish</item>
+        <item>Norwegian</item>
+        <item>Omani</item>
+        <item>Pakistani</item>
+        <item>Palauan</item>
+        <item>Panamanian</item>
+        <item>Papua New Guinean</item>
+        <item>Paraguayan</item>
+        <item>Peruvian</item>
+        <item>Polish</item>
+        <item>Portuguese</item>
+        <item>Qatari</item>
+        <item>Romanian</item>
+        <item>Russian</item>
+        <item>Rwandan</item>
+        <item>Saint Lucian</item>
+        <item>Salvadoran</item>
+        <item>Samoan</item>
+        <item>San Marinese</item>
+        <item>Sao Tomean</item>
+        <item>Saudi</item>
+        <item>Scottish</item>
+        <item>Senegalese</item>
+        <item>Serbian</item>
+        <item>Seychellois</item>
+        <item>Sierra Leonean</item>
+        <item>Singaporean</item>
+        <item>Slovakian</item>
+        <item>Slovenian</item>
+        <item>Solomon Islander</item>
+        <item>Somali</item>
+        <item>South African</item>
+        <item>South Korean</item>
+        <item>Spanish</item>
+        <item>Sri Lankan</item>
+        <item>Sudanese</item>
+        <item>Surinamer</item>
+        <item>Swazi</item>
+        <item>Swedish</item>
+        <item>Swiss</item>
+        <item>Syrian</item>
+        <item>Taiwanese</item>
+        <item>Tajik</item>
+        <item>Tanzanian</item>
+        <item>Thai</item>
+        <item>Togolese</item>
+        <item>Tongan</item>
+        <item>Trinidadian/Tobagonian</item>
+        <item>Tunisian</item>
+        <item>Turkish</item>
+        <item>Tuvaluan</item>
+        <item>Ugandan</item>
+        <item>Ukrainian</item>
+        <item>Uruguayan</item>
+        <item>Uzbekistani</item>
+        <item>Venezuelan</item>
+        <item>Vietnamese</item>
+        <item>Welsh</item>
+        <item>Yemenite</item>
+        <item>Zambian</item>
+        <item>Zimbabwean</item>
+    </string-array>
+    <string name="select">Select</string>
+
+    <!-- Change Password page -->
+    <string name="confirm">Confirm</string>
+    <string name="newpassword">New Password</string>
+    <string name="oldpassword">Old Password</string>
+    <string name="changepassword">Change Password</string>
+
+
+    <!-- (reminder) Settings page -->
+    <string name="settings">Settings</string>
+    <string name="reminders">Reminders</string>
+    <string name="enable">Enabled</string>
+    <string name="disable">Disabled</string>
+
+    <!--  notification strings -->
+    <string name="message_box_title">Record</string>
+    <string name="context_box_title">Remember to record your intrusions this </string>
+    <string name="recordType_morning">morning</string>
+    <string name="recordType_afternoon">afternoon</string>
+    <string name="recordType_evening">evening</string>
+
+
+    <!-- Main Activity page -->
+    <string name="welcome">Welcome</string>
+
+
+</resources>

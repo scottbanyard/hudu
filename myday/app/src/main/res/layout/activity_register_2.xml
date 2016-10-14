@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@color/bg_register"
+    android:gravity="center"
+    android:orientation="vertical"
+     >
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:orientation="vertical"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp" >
+
+
+
+        <TextView
+            android:id="@+id/emailtxt"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/email_entry"
+            android:textSize="30dp"
+            android:layout_gravity="center"
+            android:layout_marginBottom="10dp"
+            android:singleLine="true"
+            android:textColor="@color/lbl_welcome" />
+
+        <EditText
+            android:id="@+id/email"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:background="@color/input_register_bg"
+            android:padding="10dp"
+            android:singleLine="true"
+            android:textSize="30dp"
+            android:layout_below="@id/emailtxt"
+            android:inputType="textEmailAddress"
+            android:textColor="@color/input_register"
+            android:textColorHint="@color/input_register_hint"
+            android:textCursorDrawable="@null" />
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/password_entry"
+            android:textSize="30dp"
+            android:id="@+id/texttxt"
+            android:layout_gravity="center"
+            android:layout_marginBottom="10dp"
+            android:layout_below="@id/email"
+            android:singleLine="true"
+            android:textColor="@color/lbl_welcome" />
+
+        <EditText
+            android:id="@+id/password"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:background="@color/input_register_bg"
+            android:textSize="30dp"
+            android:layout_below="@id/texttxt"
+            android:padding="10dp"
+            android:singleLine="true"
+            android:inputType="textPassword"
+            android:textColor="@color/input_register"
+            android:textColorHint="@color/input_register_hint"
+            android:textCursorDrawable="@null"/>
+
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/confirm_password"
+            android:textSize="30dp"
+            android:layout_below="@id/password"
+            android:id="@+id/confpasstxt"
+            android:layout_gravity="center"
+            android:layout_marginBottom="10dp"
+            android:singleLine="true"
+            android:textColor="@color/lbl_welcome" />
+
+        <EditText
+            android:id="@+id/confirmpassword"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:background="@color/input_register_bg"
+            android:textSize="30dp"
+            android:padding="10dp"
+            android:layout_below="@id/confpasstxt"
+            android:singleLine="true"
+            android:inputType="textPassword"
+            android:textColor="@color/input_register"
+            android:textColorHint="@color/input_register_hint"
+            android:textCursorDrawable="@null"/>
+
+
+        <!-- Login Button -->
+
+        <Button
+            android:id="@+id/button_next2"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="10dp"
+            android:layout_below="@id/confirmpassword"
+            android:background="#ea4c88"
+            android:text="@string/next_button"
+            android:textSize="30dp"
+            android:textColor="@color/white" />
+
+        <!-- Link to Login Screen -->
+
+
+    </RelativeLayout>
+
+
+</LinearLayout>
+
+

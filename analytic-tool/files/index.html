@@ -1,0 +1,75 @@
+<html>
+<head>
+  <script src="https://cdn.firebase.com/js/client/2.2.1/firebase.js"></script>
+  <link rel="stylesheet" type="text/css" href="liststyle.css">
+  <script src="dist/sweetalert.min.js"></script>
+  <link rel="icon" href="https://myday.firebaseapp.com/favicon.ico" type="image/x-icon">
+  <title>Login Page</title>
+</head>
+<body>
+  <div class="navbar">
+    <ul>
+      <li><img src="hdlogo.png" style="width:50px;height:50px;"></li>
+      <li><a href="index.html">Hudu</a></li>
+      <li><a href="https://myday.firebaseapp.com/Hudu1.2.apk">Download</a></li>
+    </ul>
+  </div>
+<div>
+  <h2 class="admintitle">Login</h2>
+<div align="center">
+  <div id="centered">
+    <label class="loginemail" for="emailInput">Email:</label>
+    <input type='text' id='emailInput' placeholder='Enter your email...'>
+  </div>
+
+  <div id="centered2">
+    <label class="loginpassword" for="passInput">Password:</label>
+    <input type='password' id='passInput' placeholder='Enter your password...'>
+  </div>
+</div>
+<br>
+  <footer>
+    <div class="wrapper">
+	<button class="sortlogin" type="button" onClick="tryLogin()">
+    Login
+  </button>
+  </footer>
+</div>
+</div>
+
+
+<script>
+  // CREATE A REFERENCE TO FIREBASE
+  var ref = new Firebase('https://myday.firebaseio.com/');
+
+  function tryLogin(){
+    var email2 = document.getElementById("emailInput").value;
+    var password2 = document.getElementById("passInput").value;
+    ref.authWithPassword({email:email2, password:password2}, function(error, authData) {
+    if (error) {
+      //emailInput.value="";
+      switch (error.code) {
+        case "INVALID_EMAIL":
+          swal("Error!", "Your details are incorrect. Please try again.", "error");
+          break;
+        case "INVALID_PASSWORD":
+          swal("Error!", "Your details are incorrect. Please try again.", "error");
+          break;
+        case "INVALID_USER":
+          swal("Error!", "The specified user account does not exist.", "error");
+          break;
+        default:
+          swal("Error!", "Error logging in. Please check your network connection.", "error");
+          alert("Error logging user in:", error);
+      }
+    } else {
+      console.log("Authenticated successfully with payload:", authData);
+      window.location = "data.html";
+    }
+  });
+}
+
+
+</script>
+</body>
+</html>
